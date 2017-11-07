@@ -22,8 +22,6 @@ import com.algaworks.algamoney.api.config.property.AlgamoneyApiProperty;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter{
 	@Autowired AlgamoneyApiProperty algamoneyApiProperty;
-
-	private String allowedOrigin = algamoneyApiProperty.getOrigemPermitida();
 	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
@@ -32,11 +30,11 @@ public class CorsFilter implements Filter{
 	   	HttpServletResponse response = (HttpServletResponse) resp;
 	   	HttpServletRequest request = (HttpServletRequest) req;
 	   	
-	   	response.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+	   	response.setHeader("Access-Control-Allow-Origin", algamoneyApiProperty.getOrigemPermitida());
 	   	response.setHeader("Access-Control-Allow-Credentials", "true");
 	   	
 	   	if("OPTIONS".equals(request.getMethod()) && 
-	   	    allowedOrigin.equals(request.getHeader("Origin"))) {
+	   		algamoneyApiProperty.getOrigemPermitida().equals(request.getHeader("Origin"))) {
 	   		
 		   	response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
 		   	response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");

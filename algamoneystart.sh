@@ -1,1 +1,0 @@
-java -jar /home/formagio/Documents/workspace-sts-3.9.1.RELEASE/algamoney-api/target/algamoney-api-1.0.0-SNAPSHOT.jar --spring.datasource.username=root --spring.datasource.password=alex100994 --algamoney.origem-permitida=http://localhost:4200 --spring.profiles.active=oauth-security
